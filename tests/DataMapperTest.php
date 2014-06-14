@@ -29,6 +29,16 @@ class DataMapperTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $this->obj->map($schema, $data));
     }
 
+    public function testMapBasicObject()
+    {
+        $schema = array(
+            'type' => 'stdClass',
+            'fields' => array()
+        );
+
+        $this->assertInstanceOf('stdClass', $this->obj->map($schema, array()));
+    }
+
     public function testMapSimpleObject()
     {
         $schema = array(
