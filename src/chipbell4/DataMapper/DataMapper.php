@@ -20,6 +20,29 @@ class DataMapper
     }
 
     /**
+     * Maps the provided data to a schema stored in a file as
+     * JSON
+     *
+     * @param string $schema_file The path to a schema file
+     * @param array $data The raw data to use
+     */
+    public function mapFromFile($schema_file, array $data)
+    {
+        // Check if the file exists
+        if (!file_exists($schema_file)) {
+            throw new \InvalidArgumentException("Schema File $schema_file Not Found");
+        }
+        $contents = file_get_contents($schema_file);
+
+        $schema = json_decode($contents, true);
+        if ($schema === null) {
+            throw new \InvalidArgumentException('Invalid JSON File');
+        }
+
+        return $this->map($schema, $data);
+    }
+
+    /**
      * Parses a single field description into an object
      *
      * @param array $schema The object schema to parse

@@ -17,6 +17,29 @@ class DataMapperTest extends PHPUnit_Framework_TestCase
         Mockery::close();
     }
 
+    public function testMapFromFile()
+    {
+        $data = array('value' => '1');
+
+        $this->assertEquals(1, $this->obj->mapFromFile('tests/fixture/model.json', $data));
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testMapFromMissingFile()
+    {
+        $this->obj->mapFromFile('NOT_A_FILE', array()); 
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testMapFromInvalidJsonFile()
+    {
+        $this->obj->mapFromFile('tests/fixture/model.not_json', array());
+    }
+
     public function testMapInt()
     {
         $schema = array(
