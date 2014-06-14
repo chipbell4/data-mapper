@@ -9,6 +9,9 @@
         "mockery/mockery": "0.9.1"
     },
     "autoload" : {
+        "classmap" : [
+            "tests/fixture"
+        ],
         "psr-4" : { 
             "chipbell4\\DataMapper\\" : "src/chipbell4/DataMapper"
         }
