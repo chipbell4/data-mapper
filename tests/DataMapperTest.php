@@ -17,16 +17,52 @@ class DataMapperTest extends PHPUnit_Framework_TestCase
         Mockery::close();
     }
 
-    public function testMapPrimitive()
+    public function testMapInt()
     {
         $schema = array(
             'type' => 'int',
             'source' => 'value'
         );
 
-        $data = array('value' => 1);
+        $data = array('value' => '1');
 
         $this->assertEquals(1, $this->obj->map($schema, $data));
+    }
+
+    public function testMapBool()
+    {
+        $schema = array(
+            'type' => 'bool',
+            'source' => 'value'
+        );
+
+        $data = array('value' => '1');
+
+        $this->assertTrue($this->obj->map($schema, $data));
+    }
+
+    public function testMapString()
+    {
+        $schema = array(
+            'type' => 'float',
+            'source' => 'value'
+        );
+
+        $data = array('value' => 1);
+
+        $this->assertEquals(1.0, $this->obj->map($schema, $data));
+    }
+
+    public function testMapFloat()
+    {
+        $schema = array(
+            'type' => 'string',
+            'source' => 'value'
+        );
+
+        $data = array('value' => 1);
+
+        $this->assertEquals('1', $this->obj->map($schema, $data));
     }
 
     public function testMapBasicObject()

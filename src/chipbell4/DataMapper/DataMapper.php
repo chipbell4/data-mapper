@@ -65,16 +65,19 @@ class DataMapper
      */
     protected function castToPrimitive($value, $type)
     {
-        switch($type) {
-            case 'string':
-                return (string) $value;
-            case 'int':
-                return (int) $value;
-            case 'bool':
-                return (bool) $value;
-            case 'float':
-                return (float) $value;
+        if ($type == 'int') {
+            return (int) $value;
         }
+        
+        if ($type == 'bool') {
+            return (bool) $value;
+        }
+        
+        if ($type == 'float') {
+            return (float) $value;
+        }
+        
+        return (string) $value;
     }
 
     /**
