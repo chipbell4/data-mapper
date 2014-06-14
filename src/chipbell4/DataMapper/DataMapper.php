@@ -1,5 +1,8 @@
 <?php namespace chipbell4\DataMapper;
 
+/**
+ * A Utility class for mapping a flat array of data to an object schema
+ */
 class DataMapper
 {
     /**
@@ -19,6 +22,8 @@ class DataMapper
     /**
      * Parses a single field description into an object
      *
+     * @param array $schema The object schema to parse
+     * @param array $data A flat data array of values to use when populating the schema
      * @return An object structure
      */
     public function parseField(array $schema, array $data)
@@ -30,16 +35,19 @@ class DataMapper
             return $this->castToPrimitive($value, $instance_type);
         }
 
-        $constructor_args= array();
+        // Otherwise, its an object type, so parse it from there
+        $constructor_args = array();
         foreach ($schema['fields'] as $field_description) {
             $constructor_args[] = $this->parseField($field_description, $data);
         }
-
         return $this->instantiate($instance_type, $constructor_args);
     }
 
     /**
      * Returns true if the field type is a primitive
+     *
+     * @param string $field_type The field type to check
+     * @return bool
      */
     protected function fieldTypeIsPrimitive($field_type)
     {
@@ -50,6 +58,10 @@ class DataMapper
 
     /**
      * Casts a field value to a primitive
+     *
+     * @param mixed $value The value to cast
+     * @param string $type The primitive type to cast to
+     * @return mixed The $value cast to the provided type
      */
     protected function castToPrimitive($value, $type)
     {
