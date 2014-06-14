@@ -1,0 +1,13 @@
+{
+    "name" : "chipbell4/data-mapper",
+    "description" : "A helper library for mapping arrays to a object structure",
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "mockery/mockery": "0.9.1"
+    },
+    "authors" : [
+        {
+            "name" : "Chip Bell"
+        }
+    ]
+}
