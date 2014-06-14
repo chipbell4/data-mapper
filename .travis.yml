@@ -13,5 +13,5 @@ before_script:
   - phpenv rehash
 
 script:
-  - phpcs --standard=psr2 src/
-  - phpunit --verbose
+  - vendor/bin/phpcs --standard=psr2 src/
+  - vendor/bin/phpunit --verbose
