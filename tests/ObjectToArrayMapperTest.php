@@ -6,7 +6,6 @@ use chipbell4\DataMapper\ObjectToArrayMapper;
 
 class ObjectToArrayMapperTest extends PHPUnit_Framework_TestCase
 {
-
     public function setUp()
     {
         $this->obj = new ObjectToArrayMapper();
