@@ -1,4 +1,7 @@
-# Schema Mapper
+## Schema Mapper
+
+[![Build Status](https://travis-ci.org/chipbell4/data-mapper.svg)](https://travis-ci.org/chipbell4/data-mapper)
+
 Utility for mapping a flat array of data to a complex object tree via 
 their constructors. The best way to observe is to see an example.
 
